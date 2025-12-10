@@ -17,13 +17,14 @@ public class LifeController : MonoBehaviour
         maxHp = Mathf.Min(maxHp, 999); // Max 999
         hp = Mathf.Clamp(hp, 0, maxHp); // Inizializzo gli hp tra 0 e maxHp
     }
-    private int GetMaxHp() => maxHp; // Servono solo se dobbiamo richiamarli in altri script (magari se dobbiamo aggiungere power-up o effetti speciali)
+    
+    // private int GetMaxHp() => maxHp; // Servono solo se dobbiamo richiamarli in altri script (magari se dobbiamo aggiungere power-up o effetti speciali)
 
-    private void SetMaxHp(int value) // e quindi limitare gli hp massimi a 999
-    {
-        maxHp = Mathf.Min(value, 999); // inutile al momento
-        hp = Mathf.Clamp(hp, 0, maxHp); // inutile al momento
-    }
+    // private void SetMaxHp(int value) // e quindi limitare gli hp massimi a 999
+    // {
+    //     maxHp = Mathf.Min(value, 999); // inutile al momento
+    //     hp = Mathf.Clamp(hp, 0, maxHp); // inutile al momento
+    // }
 
     public void AddHp(int heal)
     {
