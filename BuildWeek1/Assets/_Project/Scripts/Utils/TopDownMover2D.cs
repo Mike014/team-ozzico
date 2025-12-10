@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TopDownMover2D : MonoBehaviour
 {
+    [SerializeField] private float speed = 1f;
     private Rigidbody2D rb;
     private Vector2 dir;
 
@@ -12,7 +13,12 @@ public class TopDownMover2D : MonoBehaviour
 
     public void SetInputNormalized(Vector2 dir)
     {
-        SetInput(dir.normalized);
+        if (dir.sqrMagnitude < 0.01f)   //se il modulo del vettore è minore di 0.01
+        {
+            SetInput(Vector2.zero);     //non normalizzi e fermi il gameobject
+            return;
+        }
+        SetInput(dir.normalized);       //altrimenti normalizza
     }
 
     void Awake()
@@ -22,6 +28,6 @@ public class TopDownMover2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + dir * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + dir * (speed * Time.fixedDeltaTime));
     }
 }
