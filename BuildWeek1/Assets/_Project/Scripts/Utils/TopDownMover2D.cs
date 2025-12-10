@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TopDownMover2D : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;
     private Rigidbody2D rb;
     private Vector2 dir;
 
@@ -23,6 +22,6 @@ public class TopDownMover2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + dir * (speed * Time.fixedDeltaTime));
+        rb.MovePosition(rb.position + dir * Time.fixedDeltaTime);
     }
 }

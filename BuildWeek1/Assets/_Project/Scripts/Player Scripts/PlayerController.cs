@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float speed = 1.0f;
     private TopDownMover2D mover;
 
     void Awake()
@@ -12,6 +13,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        mover.SetInputNormalized(input);
+        mover.SetInputNormalized(input * speed);
     }
 }
