@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        mover = GetComponent<TopDownMover2D>();
+        mover = GetComponentInChildren<TopDownMover2D>();
     }
 
     void FixedUpdate()
