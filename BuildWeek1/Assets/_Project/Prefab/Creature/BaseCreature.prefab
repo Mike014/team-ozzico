@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 4006643484943383636}
   - component: {fileID: -8548846413058089519}
   - component: {fileID: -5775658753270295360}
-  - component: {fileID: 8086467538425503950}
-  - component: {fileID: -4680378341318349099}
+  - component: {fileID: -6642593269755344890}
   m_Layer: 0
   m_Name: BaseCreature
   m_TagString: Untagged
@@ -62,19 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
---- !u!114 &8086467538425503950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8157886368356933455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540ee847afa57a44b89017bd2b14a3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!50 &-4680378341318349099
+--- !u!50 &-6642593269755344890
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -89,7 +76,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
