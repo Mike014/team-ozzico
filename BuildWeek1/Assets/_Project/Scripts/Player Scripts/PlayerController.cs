@@ -3,15 +3,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private TopDownMover2D mover;
+    private PlayerAnimationHandler _animController;
+    Vector2 input;
 
     void Awake()
     {
         mover = GetComponentInChildren<TopDownMover2D>();
+        _animController = GetComponent<PlayerAnimationHandler>();
     }
 
     void FixedUpdate()
     {
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         mover.SetInputNormalized(input);
+    }
+
+    void Update()
+    {
+        _animController.MovementAnimation(input);
     }
 }
