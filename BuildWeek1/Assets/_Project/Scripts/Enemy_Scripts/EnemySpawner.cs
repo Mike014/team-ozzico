@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float spawnInterval = 2f;        // Ogni quanto spawnerebbe
-    public float spawnDistance = 8f;        // Distanza fissa dal player
-    public float randomSpread = 2f;         // Randomizzazione aggiuntiva
+    [SerializeField] private GameObject[] enemyPrefabs;   //array dei prefab nemici
+    [SerializeField] private float spawnInterval = 2f;    //ogni quanto spawnare
+    [SerializeField] private float spawnDistance = 8f;    //distanza fissa dal player
+    [SerializeField] private float randomSpread = 2f;     //piccola variazione casuale
 
     private Transform player;
     private float timer;
 
-    void Start()
+    private void Start()
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
 
@@ -19,32 +20,38 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("EnemySpawner: Player con tag 'Player' non trovato!");
     }
 
-    void Update()
+    private void Update()
     {
-        if (player == null) return;
+        if (player == null || enemyPrefabs.Length == 0) return;
 
         timer -= Time.deltaTime;
 
         if (timer <= 0f)
         {
-            SimulateSpawn();
+            SpawnEnemy();
             timer = spawnInterval;
         }
     }
 
-    void SimulateSpawn()
+    private void SpawnEnemy()
     {
-        // Direzione random su cerchio
+        int index = Random.Range(0, enemyPrefabs.Length);       //prende un nemico casuale dall'array di nemici
+        GameObject enemyPrefab = enemyPrefabs[index];           //lo assegna
+
+        // Direzione casuale su cerchio
         Vector2 randomDir = Random.insideUnitCircle.normalized;
 
-        // Distanza = fissa + piccola variazione
+        // Distanza fissa + variazione
         float finalDistance = spawnDistance + Random.Range(-randomSpread, randomSpread);
 
+        // Posizione finale
         Vector2 spawnPos = (Vector2)player.position + randomDir * finalDistance;
 
-        // 🔵 DEBUG: mostra dove spawnerebbe il nemico
-        float dist = Vector2.Distance(player.position, spawnPos);
+        //instanzia il nemico
+        GameObject enemy = Instantiate(enemyPrefab);
+        enemy.transform.position = spawnPos;
 
-        Debug.Log($"[Test Spawn] Posizione: {spawnPos} | Distanza dal Player: {dist}");
+        // Debug
+        Debug.Log($"{enemyPrefab.name} spawnato in {spawnPos}");
     }
 }
