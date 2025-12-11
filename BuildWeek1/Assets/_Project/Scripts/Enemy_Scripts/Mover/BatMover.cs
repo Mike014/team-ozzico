@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class BatMover : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private TopDownMover2D mover;
     [SerializeField] private PlayerController player;
     [SerializeField] private int batDmg = 1;
+
     private EnemyDrop drop;
     private Transform playerTransform;
 
 
     private void Awake()
     {
+        mover = GetComponent<TopDownMover2D>();
         drop = GetComponent<EnemyDrop>();
     }
 
@@ -42,16 +44,11 @@ public class BatMover : MonoBehaviour
 
     private void EnemyMovement()        //sistema di movimento per cui il bat seguirà il player
     {
-        if (player == null)
+        if (player != null)
         {
-            return;
-        }
-        else
-        {
-            Vector2 enemyPos = transform.position;
-            Vector2 playerPos = playerTransform.position;
-
-            gameObject.transform.position = Vector2.MoveTowards(enemyPos, playerPos, speed * Time.deltaTime);
+            Vector2 direction = (playerTransform.position - transform.position);
+            mover.SetInputNormalized(direction);
+            
         }
     }
 
