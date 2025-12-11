@@ -4,6 +4,12 @@ public class LifeController : MonoBehaviour
 {
     [SerializeField] private int maxHp = 100;
     [SerializeField] private int hp = 100;
+    private PlayerAnimationHandler _animController;
+
+    void Start()
+    {
+        _animController = GetComponent<PlayerAnimationHandler>();
+    }
 
     public int GetHp() => hp;
 
@@ -17,7 +23,7 @@ public class LifeController : MonoBehaviour
         maxHp = Mathf.Min(maxHp, 999); // Max 999
         hp = Mathf.Clamp(hp, 0, maxHp); // Inizializzo gli hp tra 0 e maxHp
     }
-    
+
     // private int GetMaxHp() => maxHp; // Servono solo se dobbiamo richiamarli in altri script (magari se dobbiamo aggiungere power-up o effetti speciali)
 
     // private void SetMaxHp(int value) // e quindi limitare gli hp massimi a 999
@@ -36,6 +42,15 @@ public class LifeController : MonoBehaviour
     {
         SetHp(hp - damage);
         Debug.Log($"Danno subito: {damage}. Vita attuale: {hp}");
+
+        if (IsAlive())
+        {
+            _animController.PlayDamageAnimation();
+        }
+        else
+        {
+            _animController.DeathAnimation();
+        }
     }
 
     public bool IsAlive()
