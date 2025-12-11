@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         mover = GetComponent<TopDownMover2D>();
-        _animController = GetComponent<PlayerAnimationHandler>();
+        _animController = GetComponentInChildren<PlayerAnimationHandler>();
     }
 
     void FixedUpdate()
