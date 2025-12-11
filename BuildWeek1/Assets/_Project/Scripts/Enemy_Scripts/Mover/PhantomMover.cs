@@ -4,15 +4,14 @@ public class PhantomMover : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
     private float timer = 2f;
-    private TopDownMover2D mover;
     private EnemyDrop drop;
-    private EnemyLifeController life;
+    private LifeController life;
     Vector3 dir;
 
     private void Awake()
     {
-        life = GetComponent<EnemyLifeController>();
-        mover = GetComponent<TopDownMover2D>();
+        life = GetComponent<LifeController>();
+        drop = GetComponent<EnemyDrop>();
     }
 
     private void PhantomMovement()                                                  //mover del ghost
@@ -48,6 +47,5 @@ public class PhantomMover : MonoBehaviour
     private void Update()
     {
         PhantomMovement();
-        life.IsAlive();
     }
 }

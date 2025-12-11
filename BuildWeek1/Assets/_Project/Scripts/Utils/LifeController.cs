@@ -43,12 +43,8 @@ public class LifeController : MonoBehaviour
         if (hp <= 0)
         {
             Debug.Log($"{gameObject} e' stato sconfitto!");
-            Destroy(gameObject);
             return false;
         }
         return true;
     }
 }
-
-
-
