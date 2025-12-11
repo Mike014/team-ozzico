@@ -7,6 +7,7 @@ public class ShooterController : MonoBehaviour
 
     private void Start()
     {
+        if (weaponManager == null) return;
         // Primo colpo immediato di tutte le armi
         foreach (Weapon weapon in weaponManager.GetAllWeapons())
         {
@@ -42,16 +43,12 @@ public class ShooterController : MonoBehaviour
 
         string name = weapon.GetWeaponName().ToLower();
 
-        if (name.Contains("pistol"))
+        if (name.Contains("spaccatesta")) return new Vector2[] { Vector2.right, Vector2.left };
 
-            return new Vector2[] { Vector2.right, Vector2.left }; // destra e sinistra
+        if (name.Contains("veronica")) return new Vector2[] { Vector2.up, Vector2.down };
 
-        else if (name.Contains("shotgun"))
+        if (name.Contains("lasersonico")) return new Vector2[] { Vector2.up }; // direzione iniziale per homing
 
-            return new Vector2[] { Vector2.up, Vector2.down }; // su e giù
-
-        else
-
-            return new Vector2[] { Vector2.right }; // normalmente spara davanti davanti
+        return new Vector2[] { Vector2.right };
     }
 }

@@ -10,7 +10,7 @@ public class PlayerWeaponList : MonoBehaviour
 
         foreach (Weapon w in weaponManager.GetAllWeapons()) // Controlla se l'arma è già posseduta
         {
-            if (w.GetWeaponName() == weaponPrefab.GetWeaponName())
+            if (w != null && w.GetWeaponName() == weaponPrefab.GetWeaponName())
             {
                 w.LevelUp(); // Potenzia l'arma già posseduta
                 Debug.Log($"Arma {w.GetWeaponName()} potenziata!");
