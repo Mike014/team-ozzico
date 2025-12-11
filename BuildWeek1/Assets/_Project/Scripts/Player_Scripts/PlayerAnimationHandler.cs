@@ -6,7 +6,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     [SerializeField] private string _verticalSpeedName = "vSpeed";
     [SerializeField] private string _horizontalSpeedName = "hSpeed";
     private Animator _animator;
-    
+
     void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -29,5 +29,21 @@ public class PlayerAnimationHandler : MonoBehaviour
             SetVerticalSpeed(speed.y);
             SetHorizontalSpeed(speed.x);
         }
+    }
+
+    public void PlayDamageAnimation()
+    {
+        _animator.SetBool("isDamaged", true);
+    }
+
+    public void StopDamageAnimation()
+    {
+        _animator.SetBool("isDamaged", false);
+    }
+
+    public void DeathAnimation()
+    {
+        _animator.SetBool("isDead", true);
+        gameObject.SetActive(false);
     }
 }
