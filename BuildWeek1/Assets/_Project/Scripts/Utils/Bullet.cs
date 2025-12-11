@@ -38,4 +38,6 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject, _bulletTime);
         }
     }
+
+    public int GetDamage() => _damage;
 }

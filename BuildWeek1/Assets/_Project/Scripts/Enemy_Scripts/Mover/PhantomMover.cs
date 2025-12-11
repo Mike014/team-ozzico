@@ -32,7 +32,10 @@ public class PhantomMover : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            //collision.gameObject.GetComponent<Bullet>() -> si legge il danno del bullet e si passa il takedamage
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            int damage = bullet.GetDamage();
+            life.TakeDamage(damage);
+
             if (!life.IsAlive())
             {
                 if (drop != null)
