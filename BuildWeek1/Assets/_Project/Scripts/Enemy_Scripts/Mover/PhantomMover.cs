@@ -8,10 +8,13 @@ public class PhantomMover : MonoBehaviour
     private LifeController life;
     Vector3 dir;
 
+    private EnemiesAnimationHandler _enemyController;
+
     private void Awake()
     {
         life = GetComponent<LifeController>();
         drop = GetComponent<EnemyDrop>();
+        _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
     }
 
     private void PhantomMovement()                                                  //mover del ghost
@@ -38,11 +41,15 @@ public class PhantomMover : MonoBehaviour
 
             if (!life.IsAlive())
             {
+                _enemyController.DeathAnimation();
                 if (drop != null)
                 {
                     drop.TryDrop();
                 }
-                Destroy(gameObject);
+            }
+            else
+            {
+                _enemyController.PlayDamageAnimation();
             }
         }
     }

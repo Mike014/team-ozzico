@@ -9,16 +9,19 @@ public class BatMover : MonoBehaviour
     private EnemyDrop drop;
     private Transform playerTransform;
 
+    private EnemiesAnimationHandler _enemyController;
+
 
     private void Awake()
     {
         mover = GetComponent<TopDownMover2D>();
         drop = GetComponent<EnemyDrop>();
+        _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
     }
 
     private void Start()
     {
-        if (player == null)         // associa il target verso cui il Bat si dirigerà
+        if (player == null)         // associa il target verso cui il Bat si dirigerï¿½
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
@@ -27,7 +30,7 @@ public class BatMover : MonoBehaviour
 
                 if (player == null)
                 {
-                    Debug.LogWarning("Lo script PlayerController non è attaccato a questo oggetto!");
+                    Debug.LogWarning("Lo script PlayerController non ï¿½ attaccato a questo oggetto!");
                 }
             }
             else
@@ -36,29 +39,31 @@ public class BatMover : MonoBehaviour
             }
         }
 
-        if (player != null) 
+        if (player != null)
         {
             playerTransform = player.transform;
         }
     }
 
-    private void EnemyMovement()        //sistema di movimento per cui il bat seguirà il player
+    private void EnemyMovement()        //sistema di movimento per cui il bat seguirï¿½ il player
     {
         if (player != null)
         {
             Vector2 direction = (playerTransform.position - transform.position);
             mover.SetInputNormalized(direction);
-            
+            _enemyController.MovementAnimation(direction);
+
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)      //oncollision fa batDmg, prova a droppare e si distrugge. nota: invertire droppare e distrugge può causare problemi?
+    private void OnCollisionEnter2D(Collision2D collision)      //oncollision fa batDmg, prova a droppare e si distrugge. nota: invertire droppare e distrugge puï¿½ causare problemi?
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             LifeController life = collision.gameObject.GetComponent<LifeController>();
             if (life != null)
             {
+                _enemyController.DeathAnimation();
                 life.TakeDamage(batDmg);
             }
 
@@ -68,7 +73,7 @@ public class BatMover : MonoBehaviour
             }
 
             //<------                 animazione di esplosione del bat
-            Destroy(gameObject);    //non so se serve delay
+            // Destroy(gameObject);    //non so se serve delay -> Destroy Ã¨ giÃ  dentro l'evento di fine animazione
         }
     }
 

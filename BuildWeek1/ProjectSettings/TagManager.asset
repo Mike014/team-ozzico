@@ -52,6 +52,9 @@ TagManager:
   - name: Player
     uniqueID: 1959455225
     locked: 0
+  - name: Enemies
+    uniqueID: 3290689425
+    locked: 0
   - name: Collider
     uniqueID: 3622772287
     locked: 0

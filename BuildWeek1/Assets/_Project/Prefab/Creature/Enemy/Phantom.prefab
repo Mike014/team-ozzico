@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5764223855128658392}
   - component: {fileID: 5630313928959636835}
+  - component: {fileID: 985064215336086288}
   m_Layer: 0
-  m_Name: phantom_spritesheet_39
+  m_Name: Phantom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4424919431140486911}
+  m_Father: {fileID: 4209644514199261709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5630313928959636835
 SpriteRenderer:
@@ -84,38 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &7237610275577022899
-GameObject:
+--- !u!114 &985064215336086288
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4424919431140486911}
-  m_Layer: 0
-  m_Name: Sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4424919431140486911
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7237610275577022899}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5764223855128658392}
-  m_Father: {fileID: 4209644514199261709}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 2992552815469939644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5943402afd7f43b0aee6fc8ea871b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _verticalSpeedName: vSpeed
+  _horizontalSpeedName: hSpeed
 --- !u!1001 &6221226927587809777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,7 +169,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7799554558580198396, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4424919431140486911}
+      addedObject: {fileID: 5764223855128658392}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       insertIndex: 2

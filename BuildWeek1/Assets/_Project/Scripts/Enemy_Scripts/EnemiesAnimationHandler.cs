@@ -1,7 +1,8 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimationHandler : MonoBehaviour
+public class EnemiesAnimationHandler : MonoBehaviour
 {
     [SerializeField] private string _verticalSpeedName = "vSpeed";
     [SerializeField] private string _horizontalSpeedName = "hSpeed";
@@ -9,7 +10,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void Awake()
     {
-        _animator = GetComponentInChildren<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     private void SetVerticalSpeed(float speed)

@@ -8,7 +8,7 @@ public class LifeController : MonoBehaviour
 
     void Start()
     {
-        _animController = GetComponent<PlayerAnimationHandler>();
+        _animController = GetComponentInChildren<PlayerAnimationHandler>();
     }
 
     public int GetHp() => hp;
