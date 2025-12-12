@@ -13,32 +13,32 @@ public class BeybladeMover : MonoBehaviour
     private int index;
     private float damageTimer = 0f;
 
+    private EnemiesAnimationHandler _enemyController;
+
+
     private void Awake()
     {
         drop = GetComponent<EnemyDrop>();
         life = GetComponent<LifeController>();
         mover = GetComponent<TopDownMover2D>();
+        _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            int damage = bullet.GetDamage();
-            life.TakeDamage(damage);
-
             if (!life.IsAlive())
             {
+                _enemyController.DeathAnimation();
                 if (drop != null)
                 {
                     drop.TryDrop();
                 }
-
-                //animazione di morte
-                //inserisci qui animazione
-
-                Destroy(gameObject);
+            }
+            else
+            {
+                _enemyController.PlayDamageAnimation();
             }
         }
 
@@ -48,9 +48,6 @@ public class BeybladeMover : MonoBehaviour
             if (playerLife != null)
             {
                 playerLife.TakeDamage(damage);
-
-                //animazione di contatto
-                //inserisci qui animazione
             }
 
             //reset timer per danno continuo
@@ -84,7 +81,7 @@ public class BeybladeMover : MonoBehaviour
         if (distance <= 0.1f)
         {
             index++;                                     //passa al prossimo checkpoint
-            if (index >= checkpoints.Length) index = 0;  //quando raggiunge l'ultimo waypoint resetta, così da garantire un loop di movimento
+            if (index >= checkpoints.Length) index = 0;  //quando raggiunge l'ultimo waypoint resetta, cosï¿½ da garantire un loop di movimento
         }
 
         direction = checkpoints[index].transform.position - transform.position;                         //calcola la direzione ad ogni checkpoint

@@ -46,9 +46,9 @@ public class LifeController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         SetHp(hp - damage);
-        Debug.Log($"Danno subito: {damage}. Vita attuale: {hp}");
+        Debug.Log($"{gameObject.name} ha subito {damage} di danno. Vita attuale: {hp}");
 
-        if (hp <= 0)
+        if (IsAlive())
         {
             _animController?.PlayDamageAnimation();
         }
