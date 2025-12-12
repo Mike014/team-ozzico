@@ -73,7 +73,7 @@ public class LifeController : MonoBehaviour
 
         var shooter = GetComponent<ShooterController>();
         if (shooter != null) shooter.enabled = false;
-        
+
         _enemyController?.StopDamageAnimation();
 
         _animController?.DeathAnimation();
