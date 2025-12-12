@@ -1003,9 +1003,9 @@ TextureImporter:
       name: weaponsSprites_63
       rect:
         serializedVersion: 2
-        x: 176
+        x: 184
         y: 48
-        width: 32
+        width: 23
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

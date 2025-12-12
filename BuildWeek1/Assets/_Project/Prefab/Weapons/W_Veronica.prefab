@@ -100,4 +100,6 @@ MonoBehaviour:
   weaponName: Veronica
   damage: 30
   fireRate: 5
-  bulletPrefab: {fileID: 7252499164634457821, guid: f8278fa7485d0cf458a3f34ce5991cc2, type: 3}
+  bulletPrefab: {fileID: 2969574366173082530, guid: 46e463f9b42274e2cb33a8f6c3329851, type: 3}
+  isDoubleShot: 0
+  isHoming: 0
