@@ -5,6 +5,7 @@ public class LifeController : MonoBehaviour
     [SerializeField] private int maxHp = 100;
     [SerializeField] private int hp = 100;
     private PlayerAnimationHandler _animController;
+    private EnemiesAnimationHandler _enemyController;
     private bool _isDead = false;
 
     void Start()
@@ -61,12 +62,12 @@ public class LifeController : MonoBehaviour
         return !_isDead;
     }
 
-    private void Die() // DOMENICO: Funzione aggiunta perchè mi dava errori di despawn e di animazione non calcolata
+    public void Die() // DOMENICO: Funzione aggiunta perchï¿½ mi dava errori di despawn e di animazione non calcolata
     {
         if (_isDead) return;
 
         _isDead = true;
-        Debug.Log($"{gameObject.name} è stato sconfitto!");
+        Debug.Log($"{gameObject.name} e' stato sconfitto!");
 
         // Blocca input e sparo
         var playerController = GetComponent<PlayerController>();
@@ -74,10 +75,13 @@ public class LifeController : MonoBehaviour
 
         var shooter = GetComponent<ShooterController>();
         if (shooter != null) shooter.enabled = false;
+        
+        _enemyController?.StopDamageAnimation();
 
         _animController?.DeathAnimation();
+        _enemyController?.DeathAnimation();
 
-        // Distrugge il player dopo un breve delay (per far giocare l’animazione)
+        // Distrugge il player dopo un breve delay (per far giocare lï¿½animazione)
         Destroy(gameObject, 1f);
     }
 }
