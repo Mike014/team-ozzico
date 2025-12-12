@@ -102,7 +102,7 @@ MonoBehaviour:
   weaponName: SpaccaTesta
   damage: 10
   fireRate: 2
-  bulletPrefab: {fileID: 7252499164634457821, guid: f8278fa7485d0cf458a3f34ce5991cc2, type: 3}
+  bulletPrefab: {fileID: 3714902880123378921, guid: 81f968f687e73431ebd2b78296f29bdf, type: 3}
   isDoubleShot: 1
   isHoming: 0
 --- !u!114 &7216677117410060967
