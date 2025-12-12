@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: LaserSonico
-  damage: 100
+  damage: 20
   fireRate: 2
   bulletPrefab: {fileID: 5253372789810317475, guid: 2366eab84925a4a1ab8903273541398a, type: 3}
   isDoubleShot: 0
