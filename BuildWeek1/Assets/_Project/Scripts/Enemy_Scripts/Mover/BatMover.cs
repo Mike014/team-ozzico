@@ -9,6 +9,7 @@ public class BatMover : MonoBehaviour
     private EnemyDrop drop;
     private Transform playerTransform;
 
+    private LifeController life;
     private EnemiesAnimationHandler _enemyController;
     private bool isDead;
     private Rigidbody2D _rb;
@@ -20,6 +21,7 @@ public class BatMover : MonoBehaviour
         drop = GetComponent<EnemyDrop>();
         _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
         _rb = GetComponent<Rigidbody2D>();
+        life = GetComponent<LifeController>();
     }
 
     private void Start()
@@ -58,17 +60,17 @@ public class BatMover : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)      //oncollision fa batDmg, prova a droppare e si distrugge. nota: invertire droppare e distrugge pu� causare problemi?
+    private void OnCollisionEnter2D(Collision2D collision) //oncollision fa batDmg, prova a droppare e si distrugge. nota: invertire droppare e distrugge pu� causare problemi?
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             if (isDead) return;
             isDead = true;
 
-            LifeController life = collision.gameObject.GetComponent<LifeController>();
-            if (life != null)
+            LifeController playerLife = collision.gameObject.GetComponent<LifeController>();
+            if (playerLife != null)
             {
-                life.TakeDamage(batDmg);
+                playerLife.TakeDamage(batDmg);
             }
             mover.enabled = false;
             _enemyController.DeathAnimation();
@@ -84,7 +86,29 @@ public class BatMover : MonoBehaviour
             //<------                 animazione di esplosione del bat
             // Destroy(gameObject);    //non so se serve delay -> Destroy è già dentro l'evento di fine animazione
         }
-    }
+
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                int damage = bullet.GetDamage();
+                life.TakeDamage(damage);
+
+                if (!life.IsAlive())
+                {
+                    //animazione di esplosione
+                    //inserisci qui animazione
+
+                    if (drop != null)
+                        drop.TryDrop();
+
+                    //distruggi bat dopo la durata dell’animazione, messo 1f per ora
+                    //Destroy(gameObject, 1f); da gestire nell'animazione
+                }
+            }
+        }
+}
 
     private void Update()
     {

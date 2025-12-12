@@ -18,6 +18,7 @@ public class LifeController : MonoBehaviour
     public void SetHp(int value)
     {
         hp = Mathf.Clamp(value, 0, maxHp); // Mantiene la vita da 0 a maxHp cosi' da non andare sotto lo 0 o sopra maxhp
+        if (hp <= 0 && !_isDead) Die(); // Domenico: Aggiunta per la morte
     }
 
     private void Awake() // Uso l'awake cosi' il maxhp iniziale rimane 999 anche se da inspector metto di piu'
@@ -36,6 +37,7 @@ public class LifeController : MonoBehaviour
 
     public void AddHp(int heal)
     {
+        if (_isDead) return;
         SetHp(hp + heal);
         Debug.Log($"HP aumentati di {heal}! Vita attuale: {hp}");
     }
@@ -48,17 +50,21 @@ public class LifeController : MonoBehaviour
 
         if (hp <= 0)
         {
-            _animController.PlayDamageAnimation();
+            _animController?.PlayDamageAnimation();
         }
         else
         {
-            _animController.DeathAnimation();
+            Die();
         }
     }
 
     public bool IsAlive()
     {
-        return !_isDead;
+        if (hp <= 0)
+        {
+            return false;
+        }
+        else { return true; }
     }
 
     public void Die() // DOMENICO: Funzione aggiunta perch� mi dava errori di despawn e di animazione non calcolata
@@ -74,7 +80,7 @@ public class LifeController : MonoBehaviour
 
         var shooter = GetComponent<ShooterController>();
         if (shooter != null) shooter.enabled = false;
-        
+
         _enemyController?.StopDamageAnimation();
 
         _animController?.DeathAnimation();
