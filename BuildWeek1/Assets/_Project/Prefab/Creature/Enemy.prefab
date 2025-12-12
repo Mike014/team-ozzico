@@ -59,5 +59,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8157886368356933455, guid: 8d5d33012afc37f43a5eacc78962578c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5352211718858019316}
   m_SourcePrefab: {fileID: 100100000, guid: 8d5d33012afc37f43a5eacc78962578c, type: 3}
+--- !u!1 &3067306370722687207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8157886368356933455, guid: 8d5d33012afc37f43a5eacc78962578c, type: 3}
+  m_PrefabInstance: {fileID: 6604494259386939304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5352211718858019316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067306370722687207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366d248ffef8cd44ca00f124d69a3577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 6944350996657148352, guid: 599cf4bb30099494b8f188001cd4d6e2, type: 3}
+  - {fileID: 7564957228477941081, guid: 2e174cd9ee2b94540981160874987804, type: 3}
+  - {fileID: 5587428711390481415, guid: 3a02358fc22a3394a9493894175b3155, type: 3}
+  - {fileID: 3984011973607135307, guid: 0f77c667569e69c42955be19299b7864, type: 3}
+  dropChance: 10

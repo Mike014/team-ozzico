@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat
       objectReference: {fileID: 0}
+    - target: {fileID: 5979520205994437241, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
+      propertyPath: hp
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7799554558580198396, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -211,9 +215,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       insertIndex: 3
       addedObject: {fileID: 4443507042710515812}
-    - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -91237626472918645}
   m_SourcePrefab: {fileID: 100100000, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
 --- !u!1 &715737305190380028 stripped
 GameObject:
@@ -232,27 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684035c1b59b1474680e3bde4d77430e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mover: {fileID: 0}
   player: {fileID: 0}
   batDmg: 1
---- !u!114 &-91237626472918645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715737305190380028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366d248ffef8cd44ca00f124d69a3577, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 8884411295168340077, guid: 4ebb7b1a171366b4eb68df2937f9aae8, type: 3}
-  - {fileID: 6740061188834915426, guid: 38d6becd3b8ba334fbe40af84fcc93ae, type: 3}
-  - {fileID: 4191887247238685021, guid: 233045ac91bd9a849889ccdb71c27b17, type: 3}
-  - {fileID: 1982183149371461867, guid: 7218410bbf83d24458203b56b9eba77d, type: 3}
-  dropChance: 10
 --- !u!4 &5711153811601117927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7799554558580198396, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}

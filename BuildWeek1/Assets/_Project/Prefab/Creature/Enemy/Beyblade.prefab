@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 704638807172155664}
   - component: {fileID: 5224789891902650291}
+  - component: {fileID: 3107784626889660664}
+  - component: {fileID: 2639668072314892793}
   m_Layer: 0
   m_Name: Beyblade
   m_TagString: Untagged
@@ -84,6 +86,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3107784626889660664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111127788412235476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5943402afd7f43b0aee6fc8ea871b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _verticalSpeedName: vSpeed
+  _horizontalSpeedName: hSpeed
+--- !u!95 &2639668072314892793
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111127788412235476}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c419b3a2f0fdf46049c4f19223190a66, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2069317766572863301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,6 +129,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1094636671296648948, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.80486655
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094636671296648948, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8978133
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094636671296648948, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.001793325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094636671296648948, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.06310642
+      objectReference: {fileID: 0}
     - target: {fileID: 1094636671296648948, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -158,9 +211,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       insertIndex: 3
       addedObject: {fileID: 4530600495628223927}
-    - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9132053150670239268}
   m_SourcePrefab: {fileID: 100100000, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
 --- !u!1 &3902073785629345698 stripped
 GameObject:
@@ -182,24 +232,6 @@ MonoBehaviour:
   damage: 1
   checkpoints: []
   damageInterval: 0.5
---- !u!114 &9132053150670239268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3902073785629345698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366d248ffef8cd44ca00f124d69a3577, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1982183149371461867, guid: 7218410bbf83d24458203b56b9eba77d, type: 3}
-  - {fileID: 8884411295168340077, guid: 4ebb7b1a171366b4eb68df2937f9aae8, type: 3}
-  - {fileID: 6740061188834915426, guid: 38d6becd3b8ba334fbe40af84fcc93ae, type: 3}
-  - {fileID: 4191887247238685021, guid: 233045ac91bd9a849889ccdb71c27b17, type: 3}
-  dropChance: 10
 --- !u!4 &8109333694026179769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7799554558580198396, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5764223855128658392}
   - component: {fileID: 5630313928959636835}
   - component: {fileID: 985064215336086288}
+  - component: {fileID: 3415633647726028777}
   m_Layer: 0
   m_Name: Phantom
   m_TagString: Untagged
@@ -99,6 +100,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _verticalSpeedName: vSpeed
   _horizontalSpeedName: hSpeed
+--- !u!95 &3415633647726028777
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2992552815469939644}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57a14d4181a0142a294f0fced5ff4c49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6221226927587809777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -178,9 +200,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       insertIndex: 2
       addedObject: {fileID: 5075250667926734201}
-    - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -6442434110756656440}
   m_SourcePrefab: {fileID: 100100000, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
 --- !u!4 &4209644514199261709 stripped
 Transform:
@@ -205,21 +224,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
---- !u!114 &-6442434110756656440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8991293759425655062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366d248ffef8cd44ca00f124d69a3577, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1982183149371461867, guid: 7218410bbf83d24458203b56b9eba77d, type: 3}
-  - {fileID: 8884411295168340077, guid: 4ebb7b1a171366b4eb68df2937f9aae8, type: 3}
-  - {fileID: 6740061188834915426, guid: 38d6becd3b8ba334fbe40af84fcc93ae, type: 3}
-  - {fileID: 4191887247238685021, guid: 233045ac91bd9a849889ccdb71c27b17, type: 3}
-  dropChance: 10
