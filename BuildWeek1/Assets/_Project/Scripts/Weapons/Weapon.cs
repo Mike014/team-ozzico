@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        lastFireTime = -1f / fireRate; // Forza il primo colpo immediato
+        lastFireTime = -Mathf.Infinity; // Forza il primo colpo immediato
     }
 
     public string GetWeaponName() => weaponName;
@@ -95,10 +95,13 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void LevelUp() // Metodo per il potenziamento dell'arma
+    public void LevelUp(int times = 1) // Metodo per il potenziamento dell'arma
     {
-        damage += 1;
-        fireRate += 0.1f;
+        for (int i = 0; i < times; i++)
+        {
+            damage += 1;
+            fireRate = Mathf.Min(fireRate + 0.05f, 10f); // cap sul fireRate per evitare overflow
+        }
         Debug.Log($"{weaponName} potenziata: danno={damage}, fireRate={fireRate}");
     }
 }

@@ -5,6 +5,7 @@ public class LifeController : MonoBehaviour
     [SerializeField] private int maxHp = 100;
     [SerializeField] private int hp = 100;
     private PlayerAnimationHandler _animController;
+    private bool _isDead = false;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class LifeController : MonoBehaviour
     public void SetHp(int value)
     {
         hp = Mathf.Clamp(value, 0, maxHp); // Mantiene la vita da 0 a maxHp cosi' da non andare sotto lo 0 o sopra maxhp
+        if (hp <= 0 && !_isDead) Die(); // Domenico: Aggiunta per la morte
     }
 
     private void Awake() // Uso l'awake cosi' il maxhp iniziale rimane 999 anche se da inspector metto di piu'
@@ -34,6 +36,7 @@ public class LifeController : MonoBehaviour
 
     public void AddHp(int heal)
     {
+        if (_isDead) return;
         SetHp(hp + heal);
         Debug.Log($"HP aumentati di {heal}! Vita attuale: {hp}");
     }
@@ -45,21 +48,36 @@ public class LifeController : MonoBehaviour
 
         if (IsAlive())
         {
-            _animController.PlayDamageAnimation();
+            _animController?.PlayDamageAnimation();
         }
         else
         {
-            _animController.DeathAnimation();
+            Die();
         }
     }
 
     public bool IsAlive()
     {
-        if (hp <= 0)
-        {
-            Debug.Log($"{gameObject} e' stato sconfitto!");
-            return false;
-        }
-        return true;
+        return !_isDead;
+    }
+
+    private void Die() // DOMENICO: Funzione aggiunta perchè mi dava errori di despawn e di animazione non calcolata
+    {
+        if (_isDead) return;
+
+        _isDead = true;
+        Debug.Log($"{gameObject.name} è stato sconfitto!");
+
+        // Blocca input e sparo
+        var playerController = GetComponent<PlayerController>();
+        if (playerController != null) playerController.enabled = false;
+
+        var shooter = GetComponent<ShooterController>();
+        if (shooter != null) shooter.enabled = false;
+
+        _animController?.DeathAnimation();
+
+        // Distrugge il player dopo un breve delay (per far giocare l’animazione)
+        Destroy(gameObject, 1f);
     }
 }

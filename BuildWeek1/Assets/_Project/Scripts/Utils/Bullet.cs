@@ -65,7 +65,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D (Collision2D collision) // Gestisce le collisioni con altri oggetti
+    private void OnTriggerEnter2D (Collider2D collision) // Domenico: L'ho cambiato perchè sparando mi attraversava il nemico (da on collision a on trigger)
     {
         LifeController life = collision.gameObject.GetComponent<LifeController>();
         if (life != null)

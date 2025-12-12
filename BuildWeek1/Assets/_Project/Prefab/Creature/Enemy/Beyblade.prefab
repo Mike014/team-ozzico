@@ -154,6 +154,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
       insertIndex: 3
       addedObject: {fileID: 4530600495628223927}
+    - targetCorrespondingSourceObject: {fileID: 3067306370722687207, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9132053150670239268}
   m_SourcePrefab: {fileID: 100100000, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}
 --- !u!1 &3902073785629345698 stripped
 GameObject:
@@ -174,6 +177,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   checkpoints: []
+--- !u!114 &9132053150670239268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902073785629345698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366d248ffef8cd44ca00f124d69a3577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 5587428711390481415, guid: 3a02358fc22a3394a9493894175b3155, type: 3}
+  dropChance: 10
 --- !u!4 &8109333694026179769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7799554558580198396, guid: 42f5159a62d10304c89db3c37a1ef4c5, type: 3}

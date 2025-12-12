@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7942876465913428049}
   - component: {fileID: 4437775491844178710}
   m_Layer: 0
-  m_Name: Weapon3
+  m_Name: W_SpaccaTesta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

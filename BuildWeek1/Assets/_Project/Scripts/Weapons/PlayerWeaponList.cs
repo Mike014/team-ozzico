@@ -20,7 +20,7 @@ public class PlayerWeaponList : MonoBehaviour
 
         Weapon newWeapon = Instantiate(weaponPrefab, transform); // Istanzia arma come figlia del player
         newWeapon.transform.localPosition = Vector3.zero; // posizione in base al player
-        weaponManager.AddWeapon(newWeapon);
+        weaponManager.AddOrLevelUpWeapon(newWeapon);
 
         Debug.Log($"Arma {newWeapon.GetWeaponName()} raccolta e aggiunta al WeaponManager");
     }
