@@ -33,7 +33,7 @@ public class PhantomMover : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet")) // --> aggiungere collider con PLAYER
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             int damage = bullet.GetDamage();

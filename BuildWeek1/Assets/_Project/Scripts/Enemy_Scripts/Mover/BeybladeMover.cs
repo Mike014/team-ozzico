@@ -11,11 +11,14 @@ public class BeybladeMover : MonoBehaviour
     private Vector3 direction;
     private int index;
 
+    private EnemiesAnimationHandler _enemyController;
+
     private void Awake()
     {
         drop = GetComponent<EnemyDrop>();
         life = GetComponent<LifeController>();
         mover = GetComponent<TopDownMover2D>();
+        _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
     }
 
     private void Update()
@@ -25,9 +28,9 @@ public class BeybladeMover : MonoBehaviour
         if (distance <= 0.1f)
         {
             index++;                                     //passa al prossimo checkpoint
-            if (index >= checkpoints.Length) index = 0;  //quando raggiunge l'ultimo waypoint resetta, così da garantire un loop di movimento
+            if (index >= checkpoints.Length) index = 0;  //quando raggiunge l'ultimo waypoint resetta, cosï¿½ da garantire un loop di movimento
         }
-                                                     
+
         direction = checkpoints[index].transform.position - transform.position;                         //calcola la direzione ad ogni checkpoint
         mover.SetInputNormalized(direction);                                                            //lo passa a TopDownMover2D e normalizza
     }

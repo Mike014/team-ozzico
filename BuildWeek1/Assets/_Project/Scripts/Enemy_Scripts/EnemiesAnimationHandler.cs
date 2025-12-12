@@ -49,6 +49,7 @@ public class EnemiesAnimationHandler : MonoBehaviour
 
     public void DeathAnimationEnd()
     {
+        gameObject.SetActive(false);
         Destroy(gameObject);
     }
 }

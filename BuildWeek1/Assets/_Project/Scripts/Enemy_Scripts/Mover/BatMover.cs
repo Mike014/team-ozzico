@@ -10,6 +10,8 @@ public class BatMover : MonoBehaviour
     private Transform playerTransform;
 
     private EnemiesAnimationHandler _enemyController;
+    private bool isDead;
+    private Rigidbody2D _rb;
 
 
     private void Awake()
@@ -17,6 +19,7 @@ public class BatMover : MonoBehaviour
         mover = GetComponent<TopDownMover2D>();
         drop = GetComponent<EnemyDrop>();
         _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -52,7 +55,6 @@ public class BatMover : MonoBehaviour
             Vector2 direction = (playerTransform.position - transform.position);
             mover.SetInputNormalized(direction);
             _enemyController.MovementAnimation(direction);
-
         }
     }
 
@@ -60,12 +62,19 @@ public class BatMover : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (isDead) return;
+            isDead = true;
+
             LifeController life = collision.gameObject.GetComponent<LifeController>();
             if (life != null)
             {
-                _enemyController.DeathAnimation();
                 life.TakeDamage(batDmg);
             }
+            mover.enabled = false;
+            _enemyController.DeathAnimation();
+
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            gameObject.transform.position = collision.transform.position;
 
             if (drop != null)
             {
