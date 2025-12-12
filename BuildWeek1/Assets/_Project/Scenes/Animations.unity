@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8179672030245319522, guid: 52a8fc3db8cd54645b1bdf426ea7dd38, type: 3}
       propertyPath: hp
-      value: 102
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2855802219728452671, guid: 52a8fc3db8cd54645b1bdf426ea7dd38, type: 3}
@@ -59713,7 +59713,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 172956465194888245, guid: dd290441eb9bab142b056e990a3efb1e, type: 3}
       propertyPath: hp
-      value: 99
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1351151547855000117, guid: dd290441eb9bab142b056e990a3efb1e, type: 3}
       propertyPath: mainCam
@@ -59770,7 +59770,7 @@ PrefabInstance:
     - target: {fileID: 8075214070340125503, guid: dd290441eb9bab142b056e990a3efb1e, type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 6413529497136126059, guid: 4ebb7b1a171366b4eb68df2937f9aae8, type: 3}
+      objectReference: {fileID: 2431660219485338040, guid: 7218410bbf83d24458203b56b9eba77d, type: 3}
     - target: {fileID: 8794599798514265771, guid: dd290441eb9bab142b056e990a3efb1e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -88370,7 +88370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 337129092340446088, guid: 6ab26d2b865f05d4eb0bea14bef415ca, type: 3}
       propertyPath: hp
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4209644514199261709, guid: 6ab26d2b865f05d4eb0bea14bef415ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88426,7 +88426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991293759425655062, guid: 6ab26d2b865f05d4eb0bea14bef415ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8991293759425655062, guid: 6ab26d2b865f05d4eb0bea14bef415ca, type: 3}
       propertyPath: m_TagString
@@ -88474,7 +88474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3902073785629345698, guid: 22e934c310204de40bf7b720eda98a4c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3902073785629345698, guid: 22e934c310204de40bf7b720eda98a4c, type: 3}
       propertyPath: m_TagString
@@ -88506,7 +88506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5641942130947212604, guid: 22e934c310204de40bf7b720eda98a4c, type: 3}
       propertyPath: hp
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8109333694026179769, guid: 22e934c310204de40bf7b720eda98a4c, type: 3}
       propertyPath: m_LocalPosition.x
