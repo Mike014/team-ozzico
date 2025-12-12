@@ -35,10 +35,6 @@ public class PhantomMover : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet")) // --> aggiungere collider con PLAYER
         {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            int damage = bullet.GetDamage();
-            life.TakeDamage(damage);
-
             if (!life.IsAlive())
             {
                 _enemyController.DeathAnimation();

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BatMover : MonoBehaviour
 {
-    [SerializeField] private TopDownMover2D mover;
+    private TopDownMover2D mover;
     [SerializeField] private PlayerController player;
     [SerializeField] private int batDmg = 1;
 
@@ -64,9 +64,6 @@ public class BatMover : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (isDead) return;
-            isDead = true;
-
             LifeController playerLife = collision.gameObject.GetComponent<LifeController>();
             if (playerLife != null)
             {
@@ -82,33 +79,28 @@ public class BatMover : MonoBehaviour
             {
                 drop.TryDrop();
             }
-
-            //<------                 animazione di esplosione del bat
-            // Destroy(gameObject);    //non so se serve delay -> Destroy è già dentro l'evento di fine animazione
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            if (bullet != null)
+            if (!life.IsAlive())
             {
-                int damage = bullet.GetDamage();
-                life.TakeDamage(damage);
+                _enemyController.DeathAnimation();
+                if (drop != null)
+                    drop.TryDrop();
 
-                if (!life.IsAlive())
-                {
-                    //animazione di esplosione
-                    //inserisci qui animazione
-
-                    if (drop != null)
-                        drop.TryDrop();
-
-                    //distruggi bat dopo la durata dell’animazione, messo 1f per ora
-                    //Destroy(gameObject, 1f); da gestire nell'animazione
-                }
+                //distruggi bat dopo la durata dell’animazione, messo 1f per ora
+                //Destroy(gameObject, 1f); da gestire nell'animazione
+            }
+            else
+            {
+                _enemyController.PlayDamageAnimation();
             }
         }
-}
+    }
 
     private void Update()
     {

@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Dungeon
+    uniqueID: 3983690179
+    locked: 0
   - name: Bullets
     uniqueID: 1744190821
     locked: 0
