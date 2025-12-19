@@ -43,11 +43,14 @@ TagManager:
   - name: Background
     uniqueID: 1864471757
     locked: 0
+  - name: Dungeon
+    uniqueID: 3983690179
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Dungeon
-    uniqueID: 3983690179
+  - name: Collider
+    uniqueID: 3622772287
     locked: 0
   - name: Bullets
     uniqueID: 1744190821
@@ -57,9 +60,6 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 3290689425
-    locked: 0
-  - name: Collider
-    uniqueID: 3622772287
     locked: 0
   - name: DetailsBACK
     uniqueID: 3922384115
