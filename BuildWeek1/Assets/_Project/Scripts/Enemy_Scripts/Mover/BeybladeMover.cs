@@ -4,17 +4,17 @@ public class BeybladeMover : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private GameObject[] checkpoints;
-    [SerializeField] private float damageInterval = 0.5f; //tempo tra un hit e l'altro durante la collisione
-    //[SerializeField] private float distanceSensibility = 0.1f;
+    [SerializeField] private float damageInterval = 0.5f;
+
     private TopDownMover2D mover;
     private EnemyDrop drop;
     private LifeController life;
+    private EnemiesAnimationHandler _enemyController;
+    private Rigidbody2D rb;
+
     private Vector3 direction;
     private int index;
     private float damageTimer = 0f;
-
-    private EnemiesAnimationHandler _enemyController;
-
 
     private void Awake()
     {
@@ -22,6 +22,32 @@ public class BeybladeMover : MonoBehaviour
         life = GetComponent<LifeController>();
         mover = GetComponent<TopDownMover2D>();
         _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        if (life != null && life.IsAlive())
+        {
+            MoveAlongCheckpoints();
+        }
+    }
+
+    private void MoveAlongCheckpoints()
+    {
+        if (checkpoints.Length == 0)
+            return;
+
+        float distance = Vector2.Distance(transform.position, checkpoints[index].transform.position);
+        if (distance <= 0.1f)
+        {
+            index++;
+            if (index >= checkpoints.Length)
+                index = 0;
+        }
+
+        direction = checkpoints[index].transform.position - transform.position;
+        mover.SetInputNormalized(direction);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,11 +56,7 @@ public class BeybladeMover : MonoBehaviour
         {
             if (!life.IsAlive())
             {
-                _enemyController.DeathAnimation();
-                if (drop != null)
-                {
-                    drop.TryDrop();
-                }
+                Die();
             }
             else
             {
@@ -50,7 +72,6 @@ public class BeybladeMover : MonoBehaviour
                 playerLife.TakeDamage(damage);
             }
 
-            //reset timer per danno continuo
             damageTimer = damageInterval;
         }
     }
@@ -68,23 +89,24 @@ public class BeybladeMover : MonoBehaviour
                     playerLife.TakeDamage(damage);
                 }
 
-                //reset timer
                 damageTimer = damageInterval;
             }
         }
     }
 
-    private void Update()
+    private void Die()
     {
-        float distance = Vector2.Distance(transform.position, checkpoints[index].transform.position);   //calcola la distanza tra la posizione dell'enemy e quella del checkpoint
+        if (life.IsAlive()) return;
 
-        if (distance <= 0.1f)
-        {
-            index++;                                     //passa al prossimo checkpoint
-            if (index >= checkpoints.Length) index = 0;  //quando raggiunge l'ultimo waypoint resetta, cos� da garantire un loop di movimento
-        }
+        if (mover != null) mover.enabled = false;
 
-        direction = checkpoints[index].transform.position - transform.position;                         //calcola la direzione ad ogni checkpoint
-        mover.SetInputNormalized(direction);                                                            //lo passa a TopDownMover2D e normalizza
+        if (rb != null) rb.velocity = Vector2.zero;
+
+        CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
+        if (collider != null) collider.enabled = false;
+
+        if (_enemyController != null) _enemyController.DeathAnimation();
+
+        if (drop != null) drop.TryDrop();
     }
 }

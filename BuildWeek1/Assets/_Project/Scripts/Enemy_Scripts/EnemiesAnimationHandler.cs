@@ -25,11 +25,8 @@ public class EnemiesAnimationHandler : MonoBehaviour
 
     public void MovementAnimation(Vector2 speed)
     {
-        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
-        {
-            SetVerticalSpeed(speed.y);
-            SetHorizontalSpeed(speed.x);
-        }
+        SetVerticalSpeed(speed.y);
+        SetHorizontalSpeed(speed.x);
     }
 
     public void PlayDamageAnimation()
