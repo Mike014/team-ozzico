@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6121915848468272754}
   - component: {fileID: 7216677117410060967}
   - component: {fileID: 3904714125408120573}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_SpaccaTesta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5556367689834390325}
   - component: {fileID: 8148110707668464843}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_SpaccaTesta
   m_TagString: Untagged
   m_Icon: {fileID: 0}

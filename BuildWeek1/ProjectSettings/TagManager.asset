@@ -17,7 +17,7 @@ TagManager:
   - Background
   - Bullet
   - Enemy
-  - 
+  - weapons
   - 
   - 
   - 
@@ -63,4 +63,7 @@ TagManager:
     locked: 0
   - name: DetailsBACK
     uniqueID: 3922384115
+    locked: 0
+  - name: Enemy/Bat, Phantom
+    uniqueID: 2097529177
     locked: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2105818760462580414}
   - component: {fileID: 2430580654001342492}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_Veronica
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2871647088383808923}
   - component: {fileID: 6624701407192554998}
   - component: {fileID: 5768150927041055522}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_Veronica
   m_TagString: Untagged
   m_Icon: {fileID: 0}

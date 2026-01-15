@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2920068780044028565}
   - component: {fileID: 4669856399381911836}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_LaserSonico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4114961772284170499}
   - component: {fileID: 4607418945888038173}
   - component: {fileID: 2506436696543341814}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_LaserSonico
   m_TagString: Untagged
   m_Icon: {fileID: 0}

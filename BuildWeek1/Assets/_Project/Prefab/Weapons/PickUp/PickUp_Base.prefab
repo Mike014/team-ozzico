@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7282366859046671305}
   - component: {fileID: 5320355936286788369}
   - component: {fileID: 8766039042422189430}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654802624353915604}
   - component: {fileID: 4719382272217965079}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PickUp_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

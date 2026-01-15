@@ -6,27 +6,26 @@ public class BatMover : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private int batDmg = 1;
 
+    private Rigidbody2D rb;
     private EnemyDrop drop;
     private Transform playerTransform;
-
     private LifeController life;
     private EnemiesAnimationHandler _enemyController;
-    private bool isDead;
-    private Rigidbody2D _rb;
+
 
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         mover = GetComponent<TopDownMover2D>();
         drop = GetComponent<EnemyDrop>();
         _enemyController = GetComponentInChildren<EnemiesAnimationHandler>();
-        _rb = GetComponent<Rigidbody2D>();
         life = GetComponent<LifeController>();
     }
 
     private void Start()
     {
-        if (player == null)         // associa il target verso cui il Bat si diriger�
+        if (player == null)         // associa il target verso cui il Bat si dirigerà
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
@@ -50,14 +49,19 @@ public class BatMover : MonoBehaviour
         }
     }
 
-    private void EnemyMovement()        //sistema di movimento per cui il bat seguir� il player
+    private void Update()
     {
-        if (player != null)
+        if (life != null && life.IsAlive())
         {
-            Vector2 direction = (playerTransform.position - transform.position);
-            mover.SetInputNormalized(direction);
-            _enemyController.MovementAnimation(direction);
+            EnemyMovement();
         }
+    }
+
+    private void EnemyMovement()        //sistema di movimento per cui il bat seguirà il player
+    {
+        Vector2 direction = (playerTransform.position - transform.position);
+        mover.SetInputNormalized(direction);
+        _enemyController.MovementAnimation(direction);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) //oncollision fa batDmg, prova a droppare e si distrugge. nota: invertire droppare e distrugge pu� causare problemi?
@@ -65,20 +69,13 @@ public class BatMover : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             LifeController playerLife = collision.gameObject.GetComponent<LifeController>();
+
             if (playerLife != null)
             {
                 playerLife.TakeDamage(batDmg);
             }
-            mover.enabled = false;
-            _enemyController.DeathAnimation();
 
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            gameObject.transform.position = collision.transform.position;
-
-            if (drop != null)
-            {
-                drop.TryDrop();
-            }
+            Die();
         }
     }
 
@@ -88,12 +85,7 @@ public class BatMover : MonoBehaviour
         {
             if (!life.IsAlive())
             {
-                _enemyController.DeathAnimation();
-                if (drop != null)
-                    drop.TryDrop();
-
-                //distruggi bat dopo la durata dell’animazione, messo 1f per ora
-                //Destroy(gameObject, 1f); da gestire nell'animazione
+                Die();
             }
             else
             {
@@ -102,8 +94,20 @@ public class BatMover : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Die()
     {
-        EnemyMovement();
+        if (life.IsAlive()) return;
+
+        if (mover != null) mover.enabled = false;
+
+        if (rb != null) rb.velocity = Vector2.zero;
+
+        CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
+        if (collider != null) collider.enabled = false;
+
+        if (_enemyController != null) _enemyController.DeathAnimation();
+
+        Debug.Log("prova a droppare");
+        if (drop != null) drop.TryDrop();
     }
 }
